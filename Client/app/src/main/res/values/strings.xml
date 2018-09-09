@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PhysicExperiment</string>
+    <string name="cancel">Mégse</string>
+    <string name="set">Beállít</string>
+    <string name="hour">Óra</string>
+    <string name="colon">:</string>
+    <string name="setPeriod">Periódus beállítása</string>
+    <string name="settings">Beállítások</string>
 </resources>
