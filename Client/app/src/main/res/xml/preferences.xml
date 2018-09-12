@@ -1,4 +1,4 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <hu.bme.aut.physicexperiment.UIElement.TimePreference />
+<PreferenceScreen>
+    <hu.bme.aut.physicexperiment.Preference.TimePreference />
 
 </PreferenceScreen>

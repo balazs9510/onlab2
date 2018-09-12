@@ -6,4 +6,11 @@
     <string name="colon">:</string>
     <string name="setPeriod">Periódus beállítása</string>
     <string name="settings">Beállítások</string>
+    <string name="picture">Picture</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="intro_message">Szia</string>
+    <string name="startRecord">Felvétel indítása</string>
+    <string name="stopRecord">Felvétel leállítása</string>
 </resources>

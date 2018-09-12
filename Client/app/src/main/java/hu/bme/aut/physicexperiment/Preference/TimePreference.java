@@ -1,11 +1,8 @@
-package hu.bme.aut.physicexperiment.UIElement;
+package hu.bme.aut.physicexperiment.Preference;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
-import android.preference.PreferenceFragment;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.NumberPicker;
@@ -13,8 +10,28 @@ import android.widget.NumberPicker;
 import hu.bme.aut.physicexperiment.R;
 
 public class TimePreference extends DialogPreference {
+    public static final String KEY_PERIOD_TIME = "pref_period_time";
     private final String DEFAULT_VALUE = "0:0:1";
-    private static final String KEY_PERIOD_TIME = "pref_period_time";
+    private int hour;
+    private int min;
+    private int sec;
+    private NumberPicker hourPicker;
+    private NumberPicker minPicker;
+    private NumberPicker secPicker;
+
+    public TimePreference(Context ctxt, AttributeSet attrs) {
+        super(ctxt, attrs);
+        setDialogLayoutResource(R.layout.timepicker_dialog);
+        setPositiveButtonText(R.string.set);
+        setNegativeButtonText(R.string.cancel);
+        String storedTimeValue = this.getPersistedString(DEFAULT_VALUE);
+        String[] timeValues = storedTimeValue.split(":");
+        setKey(KEY_PERIOD_TIME);
+        hour = Integer.parseInt(timeValues[0]);
+        min = Integer.parseInt(timeValues[1]);
+        sec = Integer.parseInt(timeValues[2]);
+        setDialogIcon(null);
+    }
 
     public int getHour() {
         return hour;
@@ -43,32 +60,9 @@ public class TimePreference extends DialogPreference {
 
     }
 
-    private int hour;
-    private int min;
-    private int sec;
-
-    private NumberPicker hourPicker;
-    private NumberPicker minPicker;
-    private NumberPicker secPicker;
-
     public String getTimeString() {
         return getHour() + ":" + getMin() + ":" + getSec();
     }
-
-    public TimePreference(Context ctxt, AttributeSet attrs) {
-        super(ctxt, attrs);
-        setDialogLayoutResource(R.layout.timepicker_dialog);
-        setPositiveButtonText(R.string.set);
-        setNegativeButtonText(R.string.cancel);
-        String storedTimeValue = this.getPersistedString(DEFAULT_VALUE);
-        String[] timeValues = storedTimeValue.split(":");
-        setKey(KEY_PERIOD_TIME);
-        hour = Integer.parseInt(timeValues[0]);
-        min = Integer.parseInt(timeValues[1]);
-        sec = Integer.parseInt(timeValues[2]);
-        setDialogIcon(null);
-    }
-
 
     @Override
     public CharSequence getTitle() {
