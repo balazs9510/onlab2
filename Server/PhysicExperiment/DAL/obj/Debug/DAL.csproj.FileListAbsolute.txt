@@ -1,0 +1,17 @@
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\DAL.dll.config
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\DAL.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\DAL.pdb
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\EntityFramework.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\EntityFramework.xml
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.pdb
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.Migrations.First.resources
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache

@@ -71,6 +71,10 @@ public class GalleryInteractor {
         Call<ResponseBody> uploadImageRequest = galleryApi.uploadImage(body, nameParam, descriptionParam);
         runCallOnBackgroundThread(uploadImageRequest, responseListener);
     }
+    public void getString(ResponseListener<ResponseBody> responseListener){
+        Call<ResponseBody> getStringRequest = galleryApi.getString();
+        runCallOnBackgroundThread(getStringRequest, responseListener);
+    }
 
     public interface ResponseListener<T> {
         void onResponse(T t);

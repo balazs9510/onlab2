@@ -2,7 +2,6 @@ package hu.bme.aut.physicexperiment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -13,9 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -75,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.default_menu, menu);
+
         return true;
     }
 
@@ -122,22 +120,34 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
     @Override
     public void ImageTaken(String filePath) {
         IMAGE_PATH = filePath;
-        GalleryInteractor galleryInteractor = new GalleryInteractor(MainActivity.this);
+        final GalleryInteractor galleryInteractor = new GalleryInteractor(MainActivity.this);
 
         String name = "testImage";
         String description = "testImage";
-        galleryInteractor.uploadImage(Uri.fromFile(new File(IMAGE_PATH)), name, description, new GalleryInteractor.ResponseListener<ResponseBody>() {
+        galleryInteractor.getString(new GalleryInteractor.ResponseListener<ResponseBody>() {
             @Override
             public void onResponse(ResponseBody responseBody) {
-                Toast.makeText(MainActivity.this, "Successfully uploaded!", Toast.LENGTH_SHORT).show();
-                finish();
+                Log.d(TAG, "Response");
+               // finish();
             }
 
             @Override
             public void onError(Exception e) {
-                Toast.makeText(MainActivity.this, "Error during uploading photo!", Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
+                finish();
             }
         });
+//        galleryInteractor.uploadImage(Uri.fromFile(new File(IMAGE_PATH)), name, description, new GalleryInteractor.ResponseListener<ResponseBody>() {
+//            @Override
+//            public void onResponse(ResponseBody responseBody) {
+//               // Toast.makeText(MainActivity.this, "Successfully uploaded!", Toast.LENGTH_SHORT).show();
+//                finish();
+//            }
+//
+//            @Override
+//            public void onError(Exception e) {
+//               // Toast.makeText(MainActivity.this, "Error during uploading photo!", Toast.LENGTH_SHORT).show();
+//                e.printStackTrace();
+//            }
+//        });
     }
 }
