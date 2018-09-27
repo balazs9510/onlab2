@@ -2,6 +2,7 @@ package hu.bme.aut.physicexperiment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -11,12 +12,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import hu.bme.aut.physicexperiment.Fragment.Camera2BasicFragment;
 import hu.bme.aut.physicexperiment.Fragment.CreateExperimentFragment;
 import hu.bme.aut.physicexperiment.Helpers.TimeHelper;
@@ -25,13 +29,16 @@ import hu.bme.aut.physicexperiment.Model.GalleryInteractor;
 import hu.bme.aut.physicexperiment.Model.Time;
 import hu.bme.aut.physicexperiment.Preference.TimePreference;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements Camera2BasicFragment.OnImageTakenListener, CreateExperimentFragment.OnExperimentCreateListener {
     public static final String TMP_IMAGE_JPG = "/tmp_image.jpg";
     private static final String TAG = "MainActivity";
     private final int REQUEST_CAMERA_IMAGE = 101;
-    /*@BindView(R.id.startRecordTv)
-    TextView startRecordTextView;*/
+    @BindView(R.id.startRecordTv)
+    TextView startRecordTextView;
     @BindView(R.id.my_toolbar)
     Toolbar myToolbar;
     private Camera2BasicFragment camera2BasicFragment;
@@ -59,12 +66,27 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
         ButterKnife.bind(this);
 
         setSupportActionBar(myToolbar);
+        final GalleryInteractor galleryInteractor = new GalleryInteractor(MainActivity.this);
+        galleryInteractor.getString().enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.code());
+                }
+            }
 
-        //camera2BasicFragment = Camera2BasicFragment.newInstance();
-        //camera2BasicFragment.setListener(this);
-        //getSupportFragmentManager().beginTransaction()
-        //        .replace(R.id.container, camera2BasicFragment)
-        //       .commit();
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+        camera2BasicFragment = Camera2BasicFragment.newInstance();
+        camera2BasicFragment.setListener(this);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, camera2BasicFragment)
+               .commit();
 
     }
 
@@ -95,15 +117,15 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
         }
     }
 
-    // @OnClick(R.id.startRecordTv)
+     @OnClick(R.id.startRecordTv)
     public void recordButtonOnClick() {
-        /*if (!isRunning) {
+        if (!isRunning) {
             startRecording();
             startRecordTextView.setText(R.string.stopRecord);
         } else {
             stopRecording();
             startRecordTextView.setText(R.string.startRecord);
-        }*/
+        }
     }
 
     private void stopRecording() {
@@ -127,31 +149,20 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
 
         String name = "testImage";
         String description = "testImage";
-        galleryInteractor.getString(new GalleryInteractor.ResponseListener<ResponseBody>() {
+        galleryInteractor.uploadImage(Uri.fromFile(new File(IMAGE_PATH)), name, description, new GalleryInteractor.ResponseListener<ResponseBody>() {
             @Override
             public void onResponse(ResponseBody responseBody) {
-                Log.d(TAG, "Response");
-               // finish();
+               // Toast.makeText(MainActivity.this, "Successfully uploaded!", Toast.LENGTH_SHORT).show();
+               //finish();
+                Log.d(TAG,"asd");
             }
 
             @Override
             public void onError(Exception e) {
-                finish();
+               // Toast.makeText(MainActivity.this, "Error during uploading photo!", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
             }
         });
-//        galleryInteractor.uploadImage(Uri.fromFile(new File(IMAGE_PATH)), name, description, new GalleryInteractor.ResponseListener<ResponseBody>() {
-//            @Override
-//            public void onResponse(ResponseBody responseBody) {
-//               // Toast.makeText(MainActivity.this, "Successfully uploaded!", Toast.LENGTH_SHORT).show();
-//                finish();
-//            }
-//
-//            @Override
-//            public void onError(Exception e) {
-//               // Toast.makeText(MainActivity.this, "Error during uploading photo!", Toast.LENGTH_SHORT).show();
-//                e.printStackTrace();
-//            }
-//        });
     }
 
     @Override

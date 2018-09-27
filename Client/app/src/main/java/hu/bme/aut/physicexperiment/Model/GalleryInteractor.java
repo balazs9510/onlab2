@@ -9,6 +9,7 @@ import java.io.File;
 import hu.bme.aut.physicexperiment.Network.GalleryApi;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -27,6 +28,7 @@ public class GalleryInteractor {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(GalleryApi.ENDPOINT_URL)
+                .client(new OkHttpClient.Builder().build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -71,9 +73,8 @@ public class GalleryInteractor {
         Call<ResponseBody> uploadImageRequest = galleryApi.uploadImage(body, nameParam, descriptionParam);
         runCallOnBackgroundThread(uploadImageRequest, responseListener);
     }
-    public void getString(ResponseListener<ResponseBody> responseListener){
-        Call<ResponseBody> getStringRequest = galleryApi.getString();
-        runCallOnBackgroundThread(getStringRequest, responseListener);
+    public Call<ResponseBody> getString(){
+       return galleryApi.getString();
     }
 
     public interface ResponseListener<T> {

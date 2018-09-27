@@ -17,6 +17,13 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <TextView
+        android:id="@+id/startRecordTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="@string/startRecord"/>
     <android.support.design.widget.TextInputEditText
         android:layout_width="match_parent"
         android:hint="@string/search"
