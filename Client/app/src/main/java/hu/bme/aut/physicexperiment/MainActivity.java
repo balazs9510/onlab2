@@ -11,27 +11,27 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import hu.bme.aut.physicexperiment.Fragment.Camera2BasicFragment;
+import hu.bme.aut.physicexperiment.Fragment.CreateExperimentFragment;
 import hu.bme.aut.physicexperiment.Helpers.TimeHelper;
+import hu.bme.aut.physicexperiment.Model.Experiment;
 import hu.bme.aut.physicexperiment.Model.GalleryInteractor;
 import hu.bme.aut.physicexperiment.Model.Time;
 import hu.bme.aut.physicexperiment.Preference.TimePreference;
 import okhttp3.ResponseBody;
 
-public class MainActivity extends AppCompatActivity implements Camera2BasicFragment.OnImageTakenListener {
+public class MainActivity extends AppCompatActivity implements Camera2BasicFragment.OnImageTakenListener, CreateExperimentFragment.OnExperimentCreateListener {
     public static final String TMP_IMAGE_JPG = "/tmp_image.jpg";
     private static final String TAG = "MainActivity";
     private final int REQUEST_CAMERA_IMAGE = 101;
-    @BindView(R.id.startRecordTv)
-    TextView startRecordTextView;
+    /*@BindView(R.id.startRecordTv)
+    TextView startRecordTextView;*/
     @BindView(R.id.my_toolbar)
     Toolbar myToolbar;
     private Camera2BasicFragment camera2BasicFragment;
@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
 
         setSupportActionBar(myToolbar);
 
-        camera2BasicFragment = Camera2BasicFragment.newInstance();
-        camera2BasicFragment.setListener(this);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, camera2BasicFragment)
-                .commit();
+        //camera2BasicFragment = Camera2BasicFragment.newInstance();
+        //camera2BasicFragment.setListener(this);
+        //getSupportFragmentManager().beginTransaction()
+        //        .replace(R.id.container, camera2BasicFragment)
+        //       .commit();
 
     }
 
@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
                 // User chose the "Settings" item, show the app settings UI...
                 Intent i = new Intent(this, SettingActivity.class);
                 startActivity(i);
+            case R.id.action_create_experiment:
+                CreateExperimentFragment fragment = CreateExperimentFragment.newInstance();
+                fragment.show(getSupportFragmentManager(), "dialog");
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -92,15 +95,15 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
         }
     }
 
-    @OnClick(R.id.startRecordTv)
+    // @OnClick(R.id.startRecordTv)
     public void recordButtonOnClick() {
-        if (!isRunning) {
+        /*if (!isRunning) {
             startRecording();
             startRecordTextView.setText(R.string.stopRecord);
         } else {
             stopRecording();
             startRecordTextView.setText(R.string.startRecord);
-        }
+        }*/
     }
 
     private void stopRecording() {
@@ -149,5 +152,10 @@ public class MainActivity extends AppCompatActivity implements Camera2BasicFragm
 //                e.printStackTrace();
 //            }
 //        });
+    }
+
+    @Override
+    public void onExperimentCreate(Experiment experiment) {
+        Log.d(TAG, "Experiment created");
     }
 }
