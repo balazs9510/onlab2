@@ -7,13 +7,11 @@ D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\EntityFramework.S
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\DAL.pdb
-D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\DAL.dll.config
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\EntityFramework.xml
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\EntityFramework.SqlServer.xml
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
-D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.dll
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.pdb
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\BLL\bin\Debug\BLL.dll.config
@@ -35,3 +33,4 @@ C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.csprojResol
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.dll
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.pdb
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\MySql.Data.Entity.EF6.dll

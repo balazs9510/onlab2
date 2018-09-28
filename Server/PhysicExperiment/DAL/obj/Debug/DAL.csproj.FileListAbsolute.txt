@@ -10,11 +10,8 @@ D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\EntityFramework.S
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.dll
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.pdb
-D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.Migrations.First.resources
-D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\DAL\bin\Debug\DAL.dll.config
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\DAL\bin\Debug\DAL.dll
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\DAL\bin\Debug\DAL.pdb
@@ -36,3 +33,9 @@ C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\DAL\bin\Debug\MySql.Data.dll
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\DAL\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.Migrations.init.resources
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Google.Protobuf.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\MySql.Data.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Google.Protobuf.xml
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.Migrations.mysqlinit.resources
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
