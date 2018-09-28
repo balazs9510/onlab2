@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.DatePicker;
+
+import com.rengwuxian.materialedittext.MaterialEditText;
+
+import java.util.Date;
 
 import hu.bme.aut.physicexperiment.Model.Experiment;
 import hu.bme.aut.physicexperiment.R;
@@ -15,7 +20,9 @@ import hu.bme.aut.physicexperiment.R;
 public class CreateExperimentFragment extends DialogFragment {
 
     private OnExperimentCreateListener mListener;
-
+    MaterialEditText nameEt;
+    MaterialEditText authorEt;
+    DatePicker endDatePicker;
     public CreateExperimentFragment() {
     }
 
@@ -39,7 +46,12 @@ public class CreateExperimentFragment extends DialogFragment {
                 .setPositiveButton(R.string.Create,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                mListener.onExperimentCreate(new Experiment());
+                                Experiment exp = new Experiment();
+                                exp.setAuthorName(authorEt.getText().toString());
+                                exp.setName(nameEt.getText().toString());
+                                exp.setEndDate(new Date(endDatePicker.getYear(),
+                                        endDatePicker.getMonth(), endDatePicker.getDayOfMonth()));
+                                mListener.onExperimentCreate(exp);
                                 dismiss();
                             }
                         }
@@ -55,7 +67,11 @@ public class CreateExperimentFragment extends DialogFragment {
     }
 
     private View createView(LayoutInflater inflater) {
-        return inflater.inflate(R.layout.fragment_create_experiment, null);
+        View layout = inflater.inflate(R.layout.fragment_create_experiment, null);
+        nameEt = layout.findViewById(R.id.experiment_name_et);
+        authorEt = layout.findViewById(R.id.experiment_author_et);
+        endDatePicker = layout.findViewById(R.id.end_date_dp);
+        return layout;
     }
 
     @Override

@@ -886,7 +886,7 @@ public class Camera2BasicFragment extends Fragment
     }
 
     public interface OnImageTakenListener {
-        void ImageTaken(String filePath);
+        void ImageTaken(String filePath, String fileName);
     }
 
     /**
@@ -917,7 +917,7 @@ public class Camera2BasicFragment extends Fragment
             buffer.get(bytes);
             FileOutputStream output = null;
             try {
-                mlistener.ImageTaken(mFile.getPath());
+                mlistener.ImageTaken(mFile.getPath(), mFile.getName());
                 Log.d(TAG, "Elindult a kép kiíró szál.");
                 output = new FileOutputStream(mFile);
                 output.write(bytes);

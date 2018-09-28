@@ -1,8 +1,6 @@
 package hu.bme.aut.physicexperiment.Model;
 
-import android.content.Context;
 import android.net.Uri;
-import android.os.Handler;
 
 import java.io.File;
 
@@ -21,10 +19,8 @@ import static hu.bme.aut.physicexperiment.Network.GalleryApi.PHOTO_MULTIPART_KEY
 
 public class GalleryInteractor {
     private final GalleryApi galleryApi;
-    private final Context context;
 
-    public GalleryInteractor(Context context) {
-        this.context = context;
+    public GalleryInteractor() {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(GalleryApi.ENDPOINT_URL)
@@ -35,34 +31,8 @@ public class GalleryInteractor {
         this.galleryApi = retrofit.create(GalleryApi.class);
     }
 
-    private static <T> void runCallOnBackgroundThread(final Call<T> call, final ResponseListener<T> listener) {
-        final Handler handler = new Handler();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    final T response = call.execute().body();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            listener.onResponse(response);
-                        }
-                    });
 
-                } catch (final Exception e) {
-                    e.printStackTrace();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            listener.onError(e);
-                        }
-                    });
-                }
-            }
-        }).start();
-    }
-
-    public void uploadImage(Uri fileUri, String name, String description, ResponseListener<ResponseBody> responseListener) {
+    public Call<ResponseBody> uploadImage(Uri fileUri, String name, String description) {
         File file = new File(fileUri.getPath());
         RequestBody requestFile = RequestBody.create(MediaType.parse(MULTIPART_FORM_DATA), file);
         MultipartBody.Part body = MultipartBody.Part.createFormData(PHOTO_MULTIPART_KEY_IMG, file.getName(), requestFile);
@@ -70,16 +40,15 @@ public class GalleryInteractor {
         RequestBody nameParam = RequestBody.create(okhttp3.MultipartBody.FORM, name);
         RequestBody descriptionParam = RequestBody.create(okhttp3.MultipartBody.FORM, description);
 
-        Call<ResponseBody> uploadImageRequest = galleryApi.uploadImage(body, nameParam, descriptionParam);
-        runCallOnBackgroundThread(uploadImageRequest, responseListener);
-    }
-    public Call<ResponseBody> getString(){
-       return galleryApi.getString();
+        return galleryApi.uploadImage(body, nameParam, descriptionParam);
+
     }
 
-    public interface ResponseListener<T> {
-        void onResponse(T t);
+    public Call<ResponseBody> getString() {
+        return galleryApi.getString();
+    }
 
-        void onError(Exception e);
+    public Call<Experiment> createExperiment(Experiment e) {
+        return galleryApi.createExperiment(e);
     }
 }
