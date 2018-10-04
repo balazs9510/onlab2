@@ -1,4 +1,4 @@
-package hu.bme.aut.physicexperiment;
+package hu.bme.aut.client;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("hu.bme.aut.physicexperiment", appContext.getPackageName());
+        assertEquals("hu.bme.aut.client", appContext.getPackageName());
     }
 }

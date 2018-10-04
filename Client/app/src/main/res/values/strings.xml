@@ -1,26 +1,49 @@
 <resources>
-    <string name="app_name">PhysicExperiment</string>
+    <string name="app_name">Client</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="physic_experiment">Fizikai kísérlet</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="register">Regisztrálás</string>
+    <string name="password">Jelszó</string>
+    <string name="pw_field_required">A jelszó mező nem lehet üres!</string>
+    <string name="email_field_required">Email mező kitöltése kötelező!</string>
+    <string name="not_valid_email">Nem megfelelő email cím!</string>
+    <string name="email">Email</string>
+    <string name="repassword">Jelszó megerősítő</string>
     <string name="cancel">Mégse</string>
-    <string name="set">Beállít</string>
-    <string name="hour">Óra</string>
-    <string name="colon">:</string>
-    <string name="setPeriod">Periódus beállítása</string>
+    <string name="name">Név</string>
+    <string name="new_experiment">Új kísérlet</string>
+    <string name="my_experiments">Saját kísérleteim</string>
+    <string name="search_experiment">Kísérlet keresése</string>
     <string name="settings">Beállítások</string>
-    <string name="picture">Picture</string>
-    <string name="description_info">Info</string>
-    <string name="request_permission">This sample needs camera permission.</string>
-    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
-    <string name="intro_message">Szia</string>
-    <string name="startRecord">Felvétel indítása</string>
-    <string name="stopRecord">Felvétel leállítása</string>
+    <string name="unexpected_error_during_login">Hiba a bejelentkezési kísérlet során</string>
+    <string name="megadott_adatok_nem_helyesek">A megadott adatok nem helyesek.</string>
+    <string name="job">Foglalkozás</string>
+    <string name="age">Kor</string>
+    <string name="name_required">A név mező megadása kötelező!</string>
+    <string name="email_required">Az email mező megadása kötelező</string>
+    <string name="password_validation_message">A jelszó mező kötelező, hossza legalább 6 karakter és tartalmaznia kell egy speciális karaktert!</string>
+    <string name="repassword_validation_message">A két jelszónak meg kell egyeznie!</string>
+    <string name="not_valid_email_1">Nem megfelelő email mező!</string>
+    <string name="register_failure">Sikertelen regisztráció</string>
+    <string name="unexpected_error_register">Váratlan hiba a regisztráció során.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="create_experiment">Kísérlet létrehozása</string>
-    <string name="experiment_name">Kísérlet címe</string>
+    <string name="experiment_name">Kísérlet neve</string>
     <string name="author_name">Végrehajtó neve</string>
-    <string name="save">Mentés</string>
-    <string name="search">Keresés</string>
-    <string name="Experiment">Kísérlet</string>
-    <string name="title_activity_experiment">ExperimentActivity</string>
-    <string name="Create">Létrehozás</string>
-    <string name="expected_end_date">Várható végdátum</string>
+    <string name="experiment_description">Kísérlet leírása</string>
+    <string name="create">Létrehozás</string>
 </resources>
