@@ -1,6 +1,8 @@
 package hu.bme.aut.client.Network;
 
+import hu.bme.aut.client.Model.CreateExperimentDTO;
 import hu.bme.aut.client.Model.LoginDTO;
+import hu.bme.aut.client.Model.RegisterDTO;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -12,6 +14,7 @@ public class NetworkManager {
     private static final String ENDPOINT_ADDRESS = "http://078c7128.ngrok.io/";
     private static NetworkManager instance;
     private AccountApi accountApi;
+    private ExperimentApi experimentApi;
 
     public static NetworkManager getInstance() {
         if (instance == null) {
@@ -29,8 +32,17 @@ public class NetworkManager {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         accountApi = retrofit.create(AccountApi.class);
+        experimentApi = retrofit.create(ExperimentApi.class);
     }
-    public Call<ResponseBody> postLogin (LoginDTO loginData){
+
+    public Call<ResponseBody> postLogin(LoginDTO loginData) {
         return accountApi.postLogin(loginData);
+    }
+
+    public Call<ResponseBody> postRegister(RegisterDTO registerDTO) {
+        return accountApi.postRegister(registerDTO);
+    }
+    public Call<ResponseBody> postExperiment(CreateExperimentDTO experiment){
+        return experimentApi.postExperiment(experiment);
     }
 }

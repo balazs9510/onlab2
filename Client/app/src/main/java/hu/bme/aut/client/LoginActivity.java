@@ -31,7 +31,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -63,7 +65,8 @@ public class LoginActivity extends AppCompatActivity {
     View mProgressView;
     @BindView(R.id.llLogin)
     LinearLayout mainLayout;
-
+    @BindView(R.id.frameLogin)
+    FrameLayout frameLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,22 +87,54 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.tvLogin)
     public void login() {
-        //Todo implelemnt real login logic
+        mEmailView.setError(null);
+        mPasswordView.setError(null);
+
+        // Store values at the time of the login attempt.
+        String email = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
+
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+            mPasswordView.setError(getString(R.string.pw_field_required));
+            return;
+        }
+
+        // Check for a valid email address.
+        if (TextUtils.isEmpty(email)) {
+            mEmailView.setError(getString(R.string.email_field_required));
+            return;
+        } else if (!isEmailValid(email)) {
+            mEmailView.setError(getString(R.string.not_valid_email));
+            return;
+        }
+
         NetworkManager networkManager = NetworkManager.getInstance();
         LoginDTO loginData = new LoginDTO();
         loginData.setEmail(mEmailView.getText().toString());
         loginData.setPassword(mPasswordView.getText().toString());
         loginData.setRememberMe(false);
+        mProgressView.setVisibility(View.VISIBLE);
+        frameLogin.setClickable(false);
         networkManager.postLogin(loginData).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.d(TAG, "Sikeres login");
+                if(response.code() == 200){
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }else{
+                    Snackbar.make(mainLayout, R.string.megadott_adatok_nem_helyesek, Snackbar.LENGTH_SHORT).show();
+                }
+                mProgressView.setVisibility(View.GONE);
+                frameLogin.setClickable(true);
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e(TAG, "Hiba a bejelentkezési kísérlet során");
                 Snackbar.make(mainLayout, R.string.unexpected_error_during_login, Snackbar.LENGTH_SHORT).show();
+                mProgressView.setVisibility(View.GONE);
+                frameLogin.setClickable(true);
             }
         });
         //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -111,27 +146,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivityForResult(intent, REGISTER_REQUEST_CODE);
     }
-   /* private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }*/
 
     /**
      * Callback received when a permissions request has been completed.
@@ -139,6 +153,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
+
     }
 
 

@@ -24,8 +24,12 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/register" />
-        <activity android:name=".MainActivity"></activity>
+            android:label="@string/register"
+            android:parentActivityName=".LoginActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".ExperimentActivty"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

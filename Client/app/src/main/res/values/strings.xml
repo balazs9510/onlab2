@@ -29,4 +29,21 @@
     <string name="search_experiment">Kísérlet keresése</string>
     <string name="settings">Beállítások</string>
     <string name="unexpected_error_during_login">Hiba a bejelentkezési kísérlet során</string>
+    <string name="megadott_adatok_nem_helyesek">A megadott adatok nem helyesek.</string>
+    <string name="job">Foglalkozás</string>
+    <string name="age">Kor</string>
+    <string name="name_required">A név mező megadása kötelező!</string>
+    <string name="email_required">Az email mező megadása kötelező</string>
+    <string name="password_validation_message">A jelszó mező kötelező, hossza legalább 6 karakter és tartalmaznia kell egy speciális karaktert!</string>
+    <string name="repassword_validation_message">A két jelszónak meg kell egyeznie!</string>
+    <string name="not_valid_email_1">Nem megfelelő email mező!</string>
+    <string name="register_failure">Sikertelen regisztráció</string>
+    <string name="unexpected_error_register">Váratlan hiba a regisztráció során.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="experiment_name">Kísérlet neve</string>
+    <string name="author_name">Végrehajtó neve</string>
+    <string name="experiment_description">Kísérlet leírása</string>
+    <string name="create">Létrehozás</string>
 </resources>
