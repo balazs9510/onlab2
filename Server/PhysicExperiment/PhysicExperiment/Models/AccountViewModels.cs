@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DAL.Model;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PhysicExperiment.Models
@@ -79,6 +80,19 @@ namespace PhysicExperiment.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public string Name { get; set; }
+        public string Job { get; set; }
+        public int? Age { get; set; }
+        public ApplicationUser ToEntity(ApplicationUser entity)
+        {
+            if (entity == null) entity = new ApplicationUser();
+            entity.Age = Age;
+            entity.Name = Name;
+            entity.UserName = Email;
+            entity.Job = Job;
+            entity.Email = Email;
+            return entity;
+        }
     }
 
     public class ResetPasswordViewModel

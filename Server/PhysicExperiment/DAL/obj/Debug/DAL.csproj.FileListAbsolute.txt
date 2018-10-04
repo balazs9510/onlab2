@@ -37,5 +37,8 @@ D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Google.Protobuf.d
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\MySql.Data.dll
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\MySql.Data.Entity.EF6.dll
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\bin\Debug\Google.Protobuf.xml
-D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.Migrations.mysqlinit.resources
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.Migrations.init.resources
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.Migrations.updateShema2.resources
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\DAL\obj\Debug\DAL.Migrations.updateShema3.resources

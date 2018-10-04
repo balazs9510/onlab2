@@ -34,3 +34,5 @@ C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.csproj.Core
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.dll
 C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.pdb
 D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\bin\Debug\DAL.dll.config
+D:\Project\Onlab2\Onlab2\Server\PhysicExperiment\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache

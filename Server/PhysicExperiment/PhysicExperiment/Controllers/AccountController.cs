@@ -91,7 +91,28 @@ namespace PhysicExperiment.Controllers
                     return View(model);
             }
         }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> LoginMobile(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {               
+                return new HttpStatusCodeResult(400, "Nem megfelelő bejelentkezési adatok") ;
+            }
 
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return new HttpStatusCodeResult(200);
+                case SignInStatus.Failure:
+                    return new HttpStatusCodeResult(400, "Nem megfelelő jelszó/ email cím.");
+                default:
+                    return new HttpStatusCodeResult(401, "Nem megfelelő bejelentkezési adatok");
+            }
+        }
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -152,7 +173,7 @@ namespace PhysicExperiment.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = model.ToEntity(new ApplicationUser());
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -172,7 +193,25 @@ namespace PhysicExperiment.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> RegisterMobile(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = model.ToEntity(new ApplicationUser());
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
+                    return new HttpStatusCodeResult(201);
+
+                }
+                return Json(result);
+            }
+            return new HttpStatusCodeResult(500);
+        }
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
