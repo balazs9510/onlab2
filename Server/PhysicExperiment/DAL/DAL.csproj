@@ -72,9 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201809271611374_init.cs" />
-    <Compile Include="Migrations\201809271611374_init.Designer.cs">
-      <DependentUpon>201809271611374_init.cs</DependentUpon>
+    <Compile Include="Migrations\201809281043552_mysqlinit.cs" />
+    <Compile Include="Migrations\201809281043552_mysqlinit.Designer.cs">
+      <DependentUpon>201809281043552_mysqlinit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationDbContext.cs" />
@@ -90,8 +90,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809271611374_init.resx">
-      <DependentUpon>201809271611374_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809281043552_mysqlinit.resx">
+      <DependentUpon>201809281043552_mysqlinit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

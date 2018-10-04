@@ -5,13 +5,24 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.Results;
+using BLL.Services;
+using DAL.Model;
+using PhysicExperiment.Helper;
+using PhysicExperiment.Models.DTOs;
 
 namespace PhysicExperiment.Controllers.API
 {
     public class ExperimentController : ApiController
     {
+        private ExperimentService experimentService;
+        public ExperimentController()
+        {
+            experimentService = new ExperimentService(ApplicationDbContext.Create());
+        }
         [HttpGet]
 
         public JsonResult<string> Stg()
@@ -19,31 +30,29 @@ namespace PhysicExperiment.Controllers.API
             return Json("ok");
         }
         [HttpPost]
-        public Task<HttpResponseMessage> UploadImage()
+        public async Task<IHttpActionResult> CreateExperiment(ExperimentDTO dto)
         {
-            HttpRequestMessage request = this.Request;
-            if (!request.Content.IsMimeMultipartContent())
+            if (ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-            }
-
-            string root = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/uploads");
-            var provider = new MultipartFormDataStreamProvider(root);
-
-            var task = request.Content.ReadAsMultipartAsync(provider).
-                ContinueWith<HttpResponseMessage>(o =>
+                try
                 {
-
-                    string file1 = provider.FileData.First().LocalFileName;
-            // this is the file name on the server where the file was saved 
-
-            return new HttpResponseMessage()
-                    {
-                        Content = new StringContent("File uploaded.")
-                    };
+                    Experiment experiment = new Experiment();
+                    experiment.Id = Guid.NewGuid();
+                    dto.ToEntity(experiment);
+                    experimentService.Insert(experiment);
+                    return Ok(experiment);
                 }
-            );
-            return task;
+                catch(Exception e)
+                {
+                    e.ToString();
+                }
+                return InternalServerError();
+                
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
     }
 }

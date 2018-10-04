@@ -10,6 +10,6 @@ namespace DAL.Model
     {
         public Guid Id { get; set; }
         public Guid ExperimentId { get; set; }
-        public byte[] Content { get; set; }
+        public string Path { get; set; }
     }
 }
