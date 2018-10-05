@@ -43,6 +43,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hu.bme.aut.client.Model.LoginDTO;
+import hu.bme.aut.client.Model.LoginResponseDTO;
 import hu.bme.aut.client.Network.NetworkManager;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -110,14 +111,12 @@ public class LoginActivity extends AppCompatActivity {
 
         NetworkManager networkManager = NetworkManager.getInstance();
         LoginDTO loginData = new LoginDTO();
-        loginData.setEmail(mEmailView.getText().toString());
-        loginData.setPassword(mPasswordView.getText().toString());
         loginData.setRememberMe(false);
         mProgressView.setVisibility(View.VISIBLE);
         frameLogin.setClickable(false);
-        networkManager.postLogin(loginData).enqueue(new Callback<ResponseBody>() {
+        networkManager.postLogin(email, password).enqueue(new Callback<LoginResponseDTO>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<LoginResponseDTO> call, Response<LoginResponseDTO> response) {
                 Log.d(TAG, "Sikeres login");
                 if(response.code() == 200){
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -130,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<LoginResponseDTO> call, Throwable t) {
                 Log.e(TAG, "Hiba a bejelentkezési kísérlet során");
                 Snackbar.make(mainLayout, R.string.unexpected_error_during_login, Snackbar.LENGTH_SHORT).show();
                 mProgressView.setVisibility(View.GONE);
