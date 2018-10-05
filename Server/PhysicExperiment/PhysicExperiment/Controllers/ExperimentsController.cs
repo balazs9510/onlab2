@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using DAL.Model;
 using BLL.Services;
+using PhysicExperiment.Models;
 
 namespace PhysicExperiment.Controllers
 {
@@ -20,110 +21,27 @@ namespace PhysicExperiment.Controllers
         {
             _experimentService = new ExperimentService(db);
         }
-
-        // GET: Experiments
-        public ActionResult Index()
-        {
-            return View(_experimentService.GetList());
-        }
-
-        // GET: Experiments/Details/5
-        public async Task<ActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Experiment experiment = await _experimentService.SingleOrDefaultAsync(e => e.Id == id);
-            if (experiment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(experiment);
-        }
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,StartDate,EndDate,Name")] Experiment experiment)
+        public async Task<ActionResult> CreateExperiment(ExperimentCreateViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                var experiment = vm.ToEntity();
                 experiment.Id = Guid.NewGuid();
-                _experimentService.Insert(experiment, true);
-                return RedirectToAction("Index");
+                experiment.Author = 
+                    db.Users.SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+                try
+                {
+                    _experimentService.Insert(experiment, true);
+                    return new HttpStatusCodeResult(201);
+                }
+                catch(Exception e)
+                {
+                    return new HttpStatusCodeResult(500);
+                }
+                 
             }
-
-            return View(experiment);
+            return new HttpStatusCodeResult(404);
         }
-
-        // GET: Experiments/Edit/5
-        public async Task<ActionResult> Edit(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Experiment experiment = await db.Experiments.FindAsync(id);
-            if (experiment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(experiment);
-        }
-
-        // POST: Experiments/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,StartDate,EndDate,Name")] Experiment experiment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(experiment).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            return View(experiment);
-        }
-
-        // GET: Experiments/Delete/5
-        public async Task<ActionResult> Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Experiment experiment = await db.Experiments.FindAsync(id);
-            if (experiment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(experiment);
-        }
-
-        // POST: Experiments/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(Guid id)
-        {
-            Experiment experiment = await db.Experiments.FindAsync(id);
-            db.Experiments.Remove(experiment);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-    }
+    }    
 }

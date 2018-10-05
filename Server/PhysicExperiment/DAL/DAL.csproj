@@ -72,9 +72,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerations\ExperimentState.cs" />
     <Compile Include="Migrations\201809271611374_init.cs" />
     <Compile Include="Migrations\201809271611374_init.Designer.cs">
       <DependentUpon>201809271611374_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810041024113_updateShema2.cs" />
+    <Compile Include="Migrations\201810041024113_updateShema2.Designer.cs">
+      <DependentUpon>201810041024113_updateShema2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810041135071_updateShema3.cs" />
+    <Compile Include="Migrations\201810041135071_updateShema3.Designer.cs">
+      <DependentUpon>201810041135071_updateShema3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationDbContext.cs" />
@@ -92,6 +101,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809271611374_init.resx">
       <DependentUpon>201809271611374_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810041024113_updateShema2.resx">
+      <DependentUpon>201810041024113_updateShema2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810041135071_updateShema3.resx">
+      <DependentUpon>201810041135071_updateShema3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
