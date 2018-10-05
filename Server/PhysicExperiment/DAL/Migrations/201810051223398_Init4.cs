@@ -3,7 +3,7 @@ namespace DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class mysqlinit : DbMigration
+    public partial class Init4 : DbMigration
     {
         public override void Up()
         {
@@ -13,46 +13,15 @@ namespace DAL.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         Author = c.String(unicode: false),
+                        CreatorUserId = c.Guid(nullable: false),
                         StartDate = c.DateTime(nullable: false, precision: 0),
                         EndDate = c.DateTime(precision: 0),
                         Name = c.String(unicode: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.ExperimentImages",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        ExperimentId = c.Guid(nullable: false),
-                        Path = c.String(unicode: false),
+                        CreatorUser_Id = c.String(maxLength: 128, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Experiments", t => t.ExperimentId, cascadeDelete: true)
-                .Index(t => t.ExperimentId);
-            
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        Name = c.String(nullable: false, maxLength: 256, storeType: "nvarchar"),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        RoleId = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .ForeignKey("dbo.AspNetUsers", t => t.CreatorUser_Id)
+                .Index(t => t.CreatorUser_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -99,28 +68,65 @@ namespace DAL.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        RoleId = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.ExperimentImages",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        ExperimentId = c.Guid(nullable: false),
+                        Path = c.String(unicode: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Experiments", t => t.ExperimentId, cascadeDelete: true)
+                .Index(t => t.ExperimentId);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        Name = c.String(nullable: false, maxLength: 256, storeType: "nvarchar"),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.ExperimentImages", "ExperimentId", "dbo.Experiments");
+            DropForeignKey("dbo.Experiments", "CreatorUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.ExperimentImages", "ExperimentId", "dbo.Experiments");
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.ExperimentImages", new[] { "ExperimentId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.ExperimentImages", new[] { "ExperimentId" });
+            DropIndex("dbo.Experiments", new[] { "CreatorUser_Id" });
+            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.ExperimentImages");
+            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.ExperimentImages");
             DropTable("dbo.Experiments");
         }
     }

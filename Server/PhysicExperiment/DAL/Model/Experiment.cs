@@ -11,7 +11,8 @@ namespace DAL.Model
     {
         public Guid Id { get; set; }
         public string Author { get; set; }
-        // public Guid AuthorId { get; set; }
+        public ApplicationUser CreatorUser { get; set; }
+        public Guid CreatorUserId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Name { get; set; }

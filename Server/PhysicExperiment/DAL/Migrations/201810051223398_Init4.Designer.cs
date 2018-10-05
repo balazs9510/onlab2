@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class mysqlinit : IMigrationMetadata
+    public sealed partial class Init4 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(mysqlinit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init4));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809281043552_mysqlinit"; }
+            get { return "201810051223398_Init4"; }
         }
         
         string IMigrationMetadata.Source

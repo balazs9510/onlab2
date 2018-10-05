@@ -23,36 +23,5 @@ namespace PhysicExperiment.Controllers.API
         {
             experimentService = new ExperimentService(ApplicationDbContext.Create());
         }
-        [HttpGet]
-
-        public JsonResult<string> Stg()
-        {
-            return Json("ok");
-        }
-        [HttpPost]
-        public async Task<IHttpActionResult> CreateExperiment(ExperimentDTO dto)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    Experiment experiment = new Experiment();
-                    experiment.Id = Guid.NewGuid();
-                    dto.ToEntity(experiment);
-                    experimentService.Insert(experiment);
-                    return Ok(experiment);
-                }
-                catch(Exception e)
-                {
-                    e.ToString();
-                }
-                return InternalServerError();
-                
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-        }
     }
 }
