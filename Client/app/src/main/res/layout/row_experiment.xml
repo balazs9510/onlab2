@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/row_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        tools:text="Kísérlet neve" />
+    <TextView
+        android:id="@+id/row_tv_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Végrehajtó Károly"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/state"/>
+        <TextView
+            android:paddingLeft="5dp"
+            android:id="@+id/row_tv_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Folyamatban"/>
+
+    </LinearLayout>
+</LinearLayout>

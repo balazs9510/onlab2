@@ -46,4 +46,5 @@
     <string name="author_name">Végrehajtó neve</string>
     <string name="experiment_description">Kísérlet leírása</string>
     <string name="create">Létrehozás</string>
+    <string name="state">Állapot:</string>
 </resources>

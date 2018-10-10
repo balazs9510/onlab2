@@ -7,12 +7,21 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hu.bme.aut.client.Adapter.ExperimentAdapter;
 import hu.bme.aut.client.Fragment.CreateExperimentFragment;
+import hu.bme.aut.client.Fragment.DetailExperimentFragment;
+import hu.bme.aut.client.Fragment.ListExperimentFragment;
+import hu.bme.aut.client.Fragment.ListExperimentFragment.OnExperimentSelectedListner;
 import hu.bme.aut.client.Model.CreateExperimentDTO;
+import hu.bme.aut.client.Model.Experiment;
 import hu.bme.aut.client.Network.NetworkManager;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -20,14 +29,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ExperimentActivty extends AppCompatActivity
-        implements CreateExperimentFragment.OnExperimentChangeListener {
+        implements CreateExperimentFragment.OnExperimentChangeListener, OnExperimentSelectedListner {
     private static final String TAG = "ExperimentActivty";
     public static final String KEY_OPEN_FRAGMENT = "KEY_OPEN_FRAGMENT";
     public static final String KEY_CREATE_EXPERIMENT = "KEY_CREATE_EXPERIMENT";
-
+    public static final String KEY_LIST_EXPERIMENT = "KEY_LIST_EXPERIMENT";
     @BindView(R.id.experiment_framelayout)
     FrameLayout frameLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +52,22 @@ public class ExperimentActivty extends AppCompatActivity
         switch (intentValue) {
             case KEY_CREATE_EXPERIMENT:
                 fragment = CreateExperimentFragment.newInstance(false);
+                break;
+            case KEY_LIST_EXPERIMENT:
+                //TODO lehúzni a szerverről
+                List<Experiment> experimentList = new ArrayList<>();
+                experimentList.add(new Experiment("1", "Csudajó kísérlet", "Test Jhonny", "Folyamatban"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                experimentList.add(new Experiment("2", "Mégjobb kísérlet", "Jhonny Test", "Vége"));
+                fragment = ListExperimentFragment.newInstance(experimentList, this);
                 break;
             default:
                 fragment = CreateExperimentFragment.newInstance(false);
@@ -74,5 +98,12 @@ public class ExperimentActivty extends AppCompatActivity
     @Override
     public void onExperimentEdit() {
         //TODO
+    }
+
+
+    @Override
+    public void OnExperimentSelected(Experiment experiment) {
+        DetailExperimentFragment detailExperimentFragment = DetailExperimentFragment.newInstance(experiment.get_id());
+        getSupportFragmentManager().beginTransaction().replace(R.id.experiment_framelayout, detailExperimentFragment).commit();
     }
 }
