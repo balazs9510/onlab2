@@ -3,9 +3,12 @@ package hu.bme.aut.client;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Network;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -58,6 +61,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     public static final int REGISTER_REQUEST_CODE = 101;
+    public static final String ACCESS_TOKEN = "ACCESS_TOKEN";
     @BindView(R.id.email)
     EditText mEmailView;
     @BindView(R.id.password)
@@ -68,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout mainLayout;
     @BindView(R.id.frameLogin)
     FrameLayout frameLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,11 +122,15 @@ public class LoginActivity extends AppCompatActivity {
         networkManager.postLogin(email, password).enqueue(new Callback<LoginResponseDTO>() {
             @Override
             public void onResponse(Call<LoginResponseDTO> call, Response<LoginResponseDTO> response) {
-                Log.d(TAG, "Sikeres login");
-                if(response.code() == 200){
+                if (response.body() != null) {
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(ACCESS_TOKEN, response.body().getAccessToken());
+                    editor.apply();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Log.d(TAG, "Sikeres login");
                     startActivity(intent);
-                }else{
+                } else {
                     Snackbar.make(mainLayout, R.string.megadott_adatok_nem_helyesek, Snackbar.LENGTH_SHORT).show();
                 }
                 mProgressView.setVisibility(View.GONE);

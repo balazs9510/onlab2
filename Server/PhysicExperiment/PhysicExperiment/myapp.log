@@ -1,0 +1,66 @@
+2018-10-24 18:13:32,962 [10] ERROR PhysicExperiment.Controllers.AccountController - RegisterMobile
+System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> MySql.Data.MySqlClient.MySqlException: Unknown column 'Extent1.Name' in 'field list'
+   a következõ helyen: MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   a következõ helyen: MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   a következõ helyen: MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   a következõ helyen: MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   a következõ helyen: MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   a következõ helyen: MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   a következõ helyen: MySql.Data.Entity.EFMySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   a következõ helyen: System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+   --- Vége a belsõ kivételek veremkivonatának ---
+   a következõ helyen: System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   a következõ helyen: System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   a következõ helyen: System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
+   a következõ helyen: System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   a következõ helyen: Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   a következõ helyen: Microsoft.AspNet.Identity.UserValidator`2.<ValidateUserName>d__4.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: Microsoft.AspNet.Identity.UserValidator`2.<ValidateAsync>d__0.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: Microsoft.AspNet.Identity.UserManager`2.<CreateAsync>d__0.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: Microsoft.AspNet.Identity.UserManager`2.<CreateAsync>d__d.MoveNext()
+--- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   a következõ helyen: PhysicExperiment.Controllers.AccountController.<RegisterMobile>d__15.MoveNext() hely: C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\PhysicExperiment\Controllers\AccountController.cs, sor: 141

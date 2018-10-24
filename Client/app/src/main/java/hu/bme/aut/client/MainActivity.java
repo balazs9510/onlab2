@@ -1,9 +1,13 @@
 package hu.bme.aut.client;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -20,7 +24,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView tvLogin;
     @BindView(R.id.tvSearchExperiment)
     TextView tvSearchExperiment;
-
+    @BindView(R.id.loginFrameLayout)
+    FrameLayout logFrameLayout;
+    @BindView(R.id.myExperimentsFrameLayout)
+    FrameLayout myExperimentsFL;
+    @BindView(R.id.newExperimentFrameLayout)
+    FrameLayout newExperimentFrameLayout;
+    @BindView(R.id.tvMyExperiments)
+    TextView tvMyExperiments;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +40,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvNewExperiment.setOnClickListener(this);
         tvSearchExperiment.setOnClickListener(this);
         tvLogin.setOnClickListener(this);
+        tvMyExperiments.setOnClickListener(this);
+
         //Todo többire is onclick
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String accessToken = sharedPref.getString(LoginActivity.ACCESS_TOKEN, null);
+        if(accessToken != null){
+            logFrameLayout.setVisibility(View.GONE);
+            myExperimentsFL.setVisibility(View.VISIBLE);
+            newExperimentFrameLayout.setVisibility(View.VISIBLE);
+        }else{
+            logFrameLayout.setVisibility(View.VISIBLE);
+            myExperimentsFL.setVisibility(View.GONE);
+            newExperimentFrameLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -48,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tvLogin:
                 intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tvMyExperiments:
+                intent = new Intent(MainActivity.this, MyExperimentActivity.class);
                 startActivity(intent);
                 break;
             default:

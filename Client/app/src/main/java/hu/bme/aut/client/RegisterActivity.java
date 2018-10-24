@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
             networkManager.postRegister(getRegisterDTO()).enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    if(response.code() == 201){
+                    if(response.code() == 200){
                         Intent intent = new Intent();
                         intent.putExtra(REGISTER_EMAIL_KEY, etEmail.getText().toString());
                         intent.putExtra(REGISTER_PASSWORD_KEY, register_et_password.getText().toString());
@@ -105,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private RegisterDTO getRegisterDTO(){
         RegisterDTO registerDTO = new RegisterDTO();
-
+        registerDTO.setName(register_et_name.getText().toString());
         registerDTO.setAge(Integer.parseInt(register_et_age.getText().toString()));
         registerDTO.setEmail(etEmail.getText().toString());
         registerDTO.setJob(register_et_job.getText().toString());

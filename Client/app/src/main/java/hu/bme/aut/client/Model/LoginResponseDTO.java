@@ -19,12 +19,9 @@ private Integer expiresIn;
 @SerializedName("userName")
 @Expose
 private String userName;
-@SerializedName(".issued")
+@SerializedName("experimentDate")
 @Expose
-private Date issued;
-@SerializedName(".expires")
-@Expose
-private Date expires;
+private String experimentDate;
 
 public String getAccessToken() {
 return accessToken;
@@ -58,20 +55,5 @@ public void setUserName(String userName) {
 this.userName = userName;
 }
 
-public Date getIssued() {
-return issued;
-}
-
-public void setIssued(Date issued) {
-this.issued = issued;
-}
-
-public Date getExpires() {
-return expires;
-}
-
-public void setExpires(Date expires) {
-this.expires = expires;
-}
 
 }

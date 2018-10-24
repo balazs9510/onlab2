@@ -1,7 +1,9 @@
 package hu.bme.aut.client;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -81,10 +83,18 @@ public class ExperimentActivty extends AppCompatActivity
     public void onExperimentCreated(CreateExperimentDTO experiment) {
         //Todo befejezni
         NetworkManager networkManager = NetworkManager.getInstance();
-        networkManager.postExperiment(experiment).enqueue(new Callback<ResponseBody>() {
+        final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String accessToken = sharedPref.getString(LoginActivity.ACCESS_TOKEN, null);
+        networkManager.postExperiment(accessToken,experiment).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.d(TAG, response.message());
+                if(response.code() == 401){
+
+                    sharedPref.edit().putString(LoginActivity.ACCESS_TOKEN, null).apply();
+                    Intent intent = new Intent(ExperimentActivty.this, LoginActivity.class);
+                    Log.d(TAG, "Token expired");
+                    startActivity(intent);
+                }
             }
 
             @Override

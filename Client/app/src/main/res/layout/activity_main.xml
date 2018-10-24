@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
     <FrameLayout
+        android:id="@+id/loginFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
@@ -25,6 +26,8 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/newExperimentFrameLayout"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
@@ -42,6 +45,8 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/myExperimentsFrameLayout"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"

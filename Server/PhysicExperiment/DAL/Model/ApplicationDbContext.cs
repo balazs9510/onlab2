@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using MySql.Data.Entity;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Model
 {
-    [DbConfigurationType(typeof(MySqlEFConfiguration))]
+    [DbConfigurationType(typeof(MySqlConfiguration))]
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -30,5 +30,6 @@ namespace DAL.Model
 
 
         public System.Data.Entity.DbSet<DAL.Model.Experiment> Experiments { get; set; }
+        public System.Data.Entity.DbSet<DAL.Model.ExperimentImage> ExperimentImages { get; set; }
     }
 }

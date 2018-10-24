@@ -1,6 +1,11 @@
 package hu.bme.aut.client.Network;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import hu.bme.aut.client.Model.CreateExperimentDTO;
+import hu.bme.aut.client.Model.Experiment;
+import hu.bme.aut.client.Model.ExperimentDTO;
 import hu.bme.aut.client.Model.LoginDTO;
 import hu.bme.aut.client.Model.LoginResponseDTO;
 import hu.bme.aut.client.Model.RegisterDTO;
@@ -12,7 +17,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkManager {
-    private static final String ENDPOINT_ADDRESS = "http://83f4efe7.ngrok.io/";
+    private static final String ENDPOINT_ADDRESS = "http://a2cd8836.ngrok.io";
     private static NetworkManager instance;
     private AccountApi accountApi;
     private ExperimentApi experimentApi;
@@ -29,7 +34,11 @@ public class NetworkManager {
     private NetworkManager() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(ENDPOINT_ADDRESS)
-                .client(new OkHttpClient.Builder().build())
+                .client(new OkHttpClient
+                        .Builder()
+                        .readTimeout(120, TimeUnit.SECONDS)
+                        .connectTimeout(120, TimeUnit.SECONDS)
+                        .build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         accountApi = retrofit.create(AccountApi.class);
@@ -44,7 +53,10 @@ public class NetworkManager {
         return accountApi.postRegister(registerDTO);
     }
 
-    public Call<ResponseBody> postExperiment(CreateExperimentDTO experiment) {
-        return experimentApi.postExperiment(experiment);
+    public Call<ResponseBody> postExperiment(String authToken, CreateExperimentDTO experiment) {
+        return experimentApi.postExperiment("Bearer "+authToken,experiment);
+    }
+    public Call<List<ExperimentDTO>> getMyExperiments(String authToken) {
+        return experimentApi.getMyExperiments("Bearer "+authToken);
     }
 }
