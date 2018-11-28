@@ -1,4 +1,4 @@
 <PreferenceScreen>
-    <hu.bme.aut.physicexperiment.Preference.TimePreference />
+    <hu.bme.aut.client.Preference.TimePreference />
 
 </PreferenceScreen>

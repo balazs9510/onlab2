@@ -95,6 +95,10 @@ public class ExperimentActivty extends AppCompatActivity
                     Log.d(TAG, "Token expired");
                     startActivity(intent);
                 }
+                if(response.code() == 200){
+                    Intent intent = new Intent(ExperimentActivty.this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override

@@ -38,10 +38,14 @@ namespace PhysicExperiment.Controllers.API
             {
                 var exp = vm.ToEntity();
                 exp.Id = Guid.NewGuid();
-                var user = HttpContext.Current.User.Identity.Name;
+
+                var user = await userService.SingleOrDefaultAsync(u => u.Email == User.Identity.Name);
+                if (user == null)
+                    return Json("Nincs ilyen felhasználó");
+                exp.CreatorUser = user;
                 try
                 {
-                    experimentService.Insert(exp, true);
+                    await experimentService.InsertExperiment(exp);
                 }
                 catch(Exception e)
                 {
@@ -56,21 +60,45 @@ namespace PhysicExperiment.Controllers.API
             var experiments = new List<Experiment>();
             try
             {
-            //    if (onlyMine)
-            //    {
-            //        var user = await userService.SingleOrDefaultAsync(u => u.Email == HttpContext.Current.User.Identity.Name);
-            //        experiments = experimentService.GetList(x => x.CreatorUser == user);
-            //    }
-            //    else
-            //    {
-                    experiments = experimentService.GetList();
-                //}
+                    experiments = await experimentService.GetExperimentsAsync();
             }
             catch(Exception e)
             {
                 log.Error(nameof(GetExperiments), e);
             }
             return Json(experiments);
+        }
+        [HttpGet]
+        [Route("api/experiment/{id}")]
+        public async Task<IHttpActionResult> GetExperiment(Guid id)
+        {
+            try
+            {
+                var experiment = await experimentService.GetExperiment(id);
+                return Json(experiment);
+            }
+            catch (Exception e)
+            {
+                log.Error(nameof(GetExperiments), e);
+            }
+            return Json("Hiba történt.");
+        }
+        [HttpGet]
+        [Route("api/experiment/stopexperiment/{id}")]
+        public async Task<IHttpActionResult> StopExperiment(Guid id)
+        {
+            try
+            {
+                var experiment = await experimentService.GetExperiment(id);
+                experiment.EndDate = DateTime.Now;
+                experiment.State = Experiment.ExperimentState.End;
+                await experimentService.UpdateExperiment(experiment);
+            }
+            catch (Exception e)
+            {
+                log.Error(nameof(StopExperiment), e);
+            }
+            return Json("Hiba történt.");
         }
     }
 }

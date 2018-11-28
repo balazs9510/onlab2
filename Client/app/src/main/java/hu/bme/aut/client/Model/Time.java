@@ -1,4 +1,4 @@
-package hu.bme.aut.physicexperiment.Model;
+package hu.bme.aut.client.Model;
 
 public class Time {
     private int hour;

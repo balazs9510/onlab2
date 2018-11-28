@@ -25,3 +25,25 @@ textarea {
 .date-picker{
 
 }
+.info-button{
+    color: cornflowerblue;
+    cursor: pointer;
+}
+.info-button:hover {
+    color:darkblue;
+}
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.half-wrapper{
+    margin: 10px;
+    width : 47%;
+    display: inline-block;
+}
+.big-margin{
+    margin: 40px 0px;
+}

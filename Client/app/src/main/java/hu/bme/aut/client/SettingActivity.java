@@ -1,4 +1,4 @@
-package hu.bme.aut.physicexperiment;
+package hu.bme.aut.client;
 
 import android.content.SharedPreferences;
 import android.preference.Preference;

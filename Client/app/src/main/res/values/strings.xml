@@ -39,12 +39,21 @@
     <string name="not_valid_email_1">Nem megfelelő email mező!</string>
     <string name="register_failure">Sikertelen regisztráció</string>
     <string name="unexpected_error_register">Váratlan hiba a regisztráció során.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="set">Beállít</string>
     <string name="experiment_name">Kísérlet neve</string>
     <string name="author_name">Végrehajtó neve</string>
     <string name="experiment_description">Kísérlet leírása</string>
     <string name="create">Létrehozás</string>
     <string name="state">Állapot:</string>
+    <string name="logout">Kiejelentkezés</string>
+    <string name="start_record">Felvétel indítása</string>
+    <string name="cannot_load_exp">Nem sikerült betölteni a kísérletet</string>
+    <string name="request_permission">Kamera engedély</string>
+    <string name="camera_error">A kamera nem megnyitható</string>
+    <string name="stopRecording">Felvétel leállítása</string>
+    <string name="end_Exp">Sikeresen elvégezte a kísérletet</string>
+    <string name="hour">Óra</string>
+    <string name="colon">:</string>
+    <string name="setPeriod">Periódus beállítása</string>
+
 </resources>

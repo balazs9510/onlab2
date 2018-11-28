@@ -1,0 +1,32 @@
+﻿@using PhysicExperiment.Models
+@{
+    var dummyVm = new ExperimentViewModel();
+    List<ExperimentViewModel> experimentList = ViewBag.Experiments;
+}
+<div style="margin:20px;" class="panel panel-default">
+    <table class="table table-responsive table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <td>@Html.DisplayNameFor(x => dummyVm.Name)</td>
+                <td>@Html.DisplayNameFor(x => dummyVm.Author)</td>
+                <td>@Html.DisplayNameFor(x => dummyVm.StartDate)</td>
+                <td style="width:130px;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var experiment in experimentList)
+            {
+                <tr>
+                    <td>@experiment.Name</td>
+                    <td>@experiment.Author</td>
+                    <td>@experiment.StartDate</td>
+                    <td>
+                        <div class="info-button">
+                            <a href="Experiments/GetExperiment/@experiment.Id">Részletek</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

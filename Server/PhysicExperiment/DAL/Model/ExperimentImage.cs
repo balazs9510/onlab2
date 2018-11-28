@@ -11,5 +11,6 @@ namespace DAL.Model
         public Guid Id { get; set; }
         public Guid ExperimentId { get; set; }
         public string Path { get; set; }
+        public DateTime CreationTime { get; set; }
     }
 }

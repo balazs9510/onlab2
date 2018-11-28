@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -7,20 +8,33 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using BLL.Services;
+using DAL.Model;
 
 namespace PhysicExperiment.Controllers.API
 {
+    [Authorize]
     public class ExperimentImageController : ApiController
     {
         private ExperimentService experimentService;
+        private UserService userService;
+        private ApplicationDbContext dbContext;
         public ExperimentImageController()
         {
-            experimentService = new ExperimentService(new DAL.Model.ApplicationDbContext());
+            dbContext = new ApplicationDbContext();
+            experimentService = new ExperimentService(dbContext);
+            userService = new UserService(dbContext);
         }
         [HttpPost]
-        public async Task<HttpResponseMessage> UploadImageAsync(Guid experimentId)
+        [Route("api/ExperimentImage/{experimentId}")]
+        public async Task<HttpResponseMessage> UploadImageAsync(string experimentId)
         {
-            var experiment = experimentService.SingleOrDefaultAsync(e => e.Id == experimentId);
+            var experiment = await experimentService.GetExperiment(Guid.Parse(experimentId));
+            if (experiment == null)
+                Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Not found experiment");
+            var user = await userService.SingleOrDefaultAsync(x => x.UserName == HttpContext.Current.User.Identity.Name);
+            if (experiment.CreatorUser != user)
+                Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Wrong user.");
+
             Dictionary<string, object> dict = new Dictionary<string, object>();
 
             try
@@ -36,13 +50,13 @@ namespace PhysicExperiment.Controllers.API
 
                         // int MaxContentLength = 1024 * 1024 * 1; //Size = 1 MB
 
-                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".png" };
                         var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
                         var extension = ext.ToLower();
                         if (!AllowedFileExtensions.Contains(extension))
                         {
 
-                            var message = string.Format("Please Upload image of type .jpg,.gif,.png.");
+                            var message = string.Format("Please Upload image of type .jpg, .png.");
 
                             dict.Add("error", message);
                             response.StatusCode = HttpStatusCode.BadRequest;
@@ -50,10 +64,26 @@ namespace PhysicExperiment.Controllers.API
                         }
                         else
                         {
-                            var filePath = HttpContext.Current.Server.MapPath("~/App_Data/" + Guid.NewGuid() + extension);
-                            //Userimage myfolder name where i want to save my image
-                            postedFile.SaveAs(filePath);
+                            var serverPath = HttpContext.Current.Server.MapPath("~/App_Data");
+                            var currentUserFolder = Path.Combine(serverPath, user.UserName);
+                            Directory.CreateDirectory(currentUserFolder);
+                            var experimentFolder = Path.Combine(currentUserFolder, experiment.Id.ToString());
+                            Directory.CreateDirectory(experimentFolder);
+                            var id = Guid.NewGuid();
+                            var filePath = HttpContext.Current.Server.MapPath($"~/App_Data/{user.UserName}/{experiment.Id}/" + id + extension);
+                            var expImage = new ExperimentImage
+                            {
+                                Id = id,
+                                ExperimentId = experiment.Id,
+                                Path = filePath,
+                                CreationTime = DateTime.Now
+                                
+                            };
 
+                            postedFile.SaveAs(filePath);
+                            dbContext.ExperimentImages.Add(expImage);
+                            await dbContext.SaveChangesAsync();
+                            
                         }
                     }
 

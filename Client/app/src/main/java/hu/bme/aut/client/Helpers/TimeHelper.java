@@ -1,6 +1,7 @@
-package hu.bme.aut.physicexperiment.Helpers;
+package hu.bme.aut.client.Helpers;
 
-import hu.bme.aut.physicexperiment.Model.Time;
+
+import hu.bme.aut.client.Model.Time;
 
 public class TimeHelper {
     final static String regex = ":";

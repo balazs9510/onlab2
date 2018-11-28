@@ -1,4 +1,4 @@
-package hu.bme.aut.physicexperiment.Preference;
+package hu.bme.aut.client.Preference;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,8 +6,8 @@ import android.preference.Preference;
 
 public class SavedState extends Preference.BaseSavedState {
     // Standard creator object using an instance of this class
-    public static final Parcelable.Creator<SavedState> CREATOR =
-            new Parcelable.Creator<SavedState>() {
+    public static final Creator<SavedState> CREATOR =
+            new Creator<SavedState>() {
 
                 public SavedState createFromParcel(Parcel in) {
                     return new SavedState(in);

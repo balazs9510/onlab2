@@ -40,7 +40,7 @@ public class MyExperimentAdapter extends RecyclerView.Adapter<MyExperimentAdapte
     @Override
     public void onBindViewHolder(@NonNull ExperimentViewHolder experimentViewHolder, int i) {
         Experiment experiment = experiments.get(i);
-        experimentViewHolder.tvName.setText(experiment.getAuthor());
+        experimentViewHolder.tvName.setText(experiment.getName());
 
     }
 
@@ -48,7 +48,9 @@ public class MyExperimentAdapter extends RecyclerView.Adapter<MyExperimentAdapte
     public int getItemCount() {
         return experiments.size();
     }
-
+    public Experiment getExperimentInPosition(int position){
+        return  experiments.get(position);
+    }
     public class ExperimentViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.row_myExperimentNameTv)

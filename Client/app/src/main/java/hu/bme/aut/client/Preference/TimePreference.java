@@ -1,4 +1,4 @@
-package hu.bme.aut.physicexperiment.Preference;
+package hu.bme.aut.client.Preference;
 
 import android.content.Context;
 import android.os.Parcelable;
@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.NumberPicker;
 
-import hu.bme.aut.physicexperiment.R;
+import hu.bme.aut.client.R;
 
 public class TimePreference extends DialogPreference {
     public static final String KEY_PERIOD_TIME = "pref_period_time";

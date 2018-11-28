@@ -11,9 +11,10 @@ namespace DAL.Model
 {
     public class Experiment
     {
-        [Key]
         public Guid Id { get; set; }
+        [ForeignKey("CreatorUserId")]
         public ApplicationUser CreatorUser { get; set; }
+        public string CreatorUserId { get; set; }
         public string Author { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }

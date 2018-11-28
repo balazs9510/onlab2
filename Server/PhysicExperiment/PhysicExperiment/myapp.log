@@ -1,66 +1,98 @@
-2018-10-24 18:13:32,962 [10] ERROR PhysicExperiment.Controllers.AccountController - RegisterMobile
-System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> MySql.Data.MySqlClient.MySqlException: Unknown column 'Extent1.Name' in 'field list'
-   a következõ helyen: MySql.Data.MySqlClient.MySqlStream.ReadPacket()
-   a következõ helyen: MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
-   a következõ helyen: MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
-   a következõ helyen: MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
-   a következõ helyen: MySql.Data.MySqlClient.MySqlDataReader.NextResult()
-   a következõ helyen: MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
-   a következõ helyen: MySql.Data.Entity.EFMySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
-   a következõ helyen: System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
-   --- Vége a belsõ kivételek veremkivonatának ---
-   a következõ helyen: System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.<ExecuteStoreCommandsAsync>d__c.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.<ExecuteAsync>d__0`1.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
-   a következõ helyen: System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
-   a következõ helyen: System.Data.Entity.Core.Objects.ObjectQuery`1.<GetResultsAsync>d__e.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: System.Data.Entity.Utilities.TaskExtensions.CultureAwaiter`1.GetResult()
-   a következõ helyen: System.Data.Entity.Internal.LazyAsyncEnumerator`1.<FirstMoveNextAsync>d__0.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: System.Data.Entity.Infrastructure.IDbAsyncEnumerableExtensions.<FirstOrDefaultAsync>d__25`1.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
-   a következõ helyen: Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
-   a következõ helyen: Microsoft.AspNet.Identity.UserValidator`2.<ValidateUserName>d__4.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: Microsoft.AspNet.Identity.UserValidator`2.<ValidateAsync>d__0.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: Microsoft.AspNet.Identity.UserManager`2.<CreateAsync>d__0.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: Microsoft.AspNet.Identity.UserManager`2.<CreateAsync>d__d.MoveNext()
---- Verem vége nyomkövetés a kivétel elõzõ elõfordulási helyétõl kezdve ---
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   a következõ helyen: System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
-   a következõ helyen: PhysicExperiment.Controllers.AccountController.<RegisterMobile>d__15.MoveNext() hely: C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\PhysicExperiment\Controllers\AccountController.cs, sor: 141
+2018-11-28 19:19:26,820 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController - ffmpeg version N-92544-gb9aff7a53d Copyright (c) 2000-2018 the FFmpeg developers
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   built with gcc 8.2.1 (GCC) 20181017
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavutil      56. 24.101 / 56. 24.101
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavcodec     58. 40.100 / 58. 40.100
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavformat    58. 23.100 / 58. 23.100
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavdevice    58.  6.100 / 58.  6.100
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavfilter     7. 46.101 /  7. 46.101
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswscale      5.  4.100 /  5.  4.100
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswresample   3.  4.100 /  3.  4.100
+2018-11-28 19:19:26,835 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libpostproc    55.  4.100 / 55.  4.100
+2018-11-28 19:19:26,836 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController - [concat @ 0000017a255ebbc0] Impossible to open '"C:Projektekonlab2onlab2ServerPhysicExperimentPhysicExperimentApp_Data95berta.balazs@gmail.com86748d79-12d0-4685-8ac1-5b329a31ac835793d6e8-40e3-444e-b1f8-a7b04094665e.jpg"+'
+2018-11-28 19:19:26,836 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController - C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\PhysicExperiment\App_Data\test.txt: Invalid argument
+2018-11-28 19:19:30,921 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController - 
+2018-11-28 19:21:33,968 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController - ffmpeg version N-92544-gb9aff7a53d Copyright (c) 2000-2018 the FFmpeg developers
+2018-11-28 19:21:33,977 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - 
+2018-11-28 19:21:33,977 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   built with gcc 8.2.1 (GCC) 20181017
+2018-11-28 19:21:33,977 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth
+2018-11-28 19:21:33,978 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavutil      56. 24.101 / 56. 24.101
+2018-11-28 19:21:33,978 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavcodec     58. 40.100 / 58. 40.100
+2018-11-28 19:21:33,979 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavformat    58. 23.100 / 58. 23.100
+2018-11-28 19:21:33,979 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavdevice    58.  6.100 / 58.  6.100
+2018-11-28 19:21:33,979 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavfilter     7. 46.101 /  7. 46.101
+2018-11-28 19:21:33,980 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswscale      5.  4.100 /  5.  4.100
+2018-11-28 19:21:33,980 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswresample   3.  4.100 /  3.  4.100
+2018-11-28 19:21:33,980 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libpostproc    55.  4.100 / 55.  4.100
+2018-11-28 19:21:33,980 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController - [concat @ 00000212a19dbbc0] Impossible to open '"C:Projektekonlab2onlab2ServerPhysicExperimentPhysicExperimentApp_Data95berta.balazs@gmail.com86748d79-12d0-4685-8ac1-5b329a31ac835793d6e8-40e3-444e-b1f8-a7b04094665e.jpg"+'
+2018-11-28 19:21:33,980 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController - C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\PhysicExperiment\App_Data\test.txt: Invalid argument
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController - ffmpeg version N-92544-gb9aff7a53d Copyright (c) 2000-2018 the FFmpeg developers
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   built with gcc 8.2.1 (GCC) 20181017
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavutil      56. 24.101 / 56. 24.101
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavcodec     58. 40.100 / 58. 40.100
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavformat    58. 23.100 / 58. 23.100
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavdevice    58.  6.100 / 58.  6.100
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavfilter     7. 46.101 /  7. 46.101
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswscale      5.  4.100 /  5.  4.100
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswresample   3.  4.100 /  3.  4.100
+2018-11-28 19:21:38,578 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libpostproc    55.  4.100 / 55.  4.100
+2018-11-28 19:21:38,586 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController - [concat @ 000001d94047bbc0] Impossible to open '"C:Projektekonlab2onlab2ServerPhysicExperimentPhysicExperimentApp_Data95berta.balazs@gmail.com86748d79-12d0-4685-8ac1-5b329a31ac835793d6e8-40e3-444e-b1f8-a7b04094665e.jpg"+'
+2018-11-28 19:21:38,586 [14] DEBUG PhysicExperiment.Controllers.ExperimentsController - C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\PhysicExperiment\App_Data\test.txt: Invalid argument
+2018-11-28 19:21:38,588 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - 
+2018-11-28 19:26:34,682 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController - ffmpeg version N-92544-gb9aff7a53d Copyright (c) 2000-2018 the FFmpeg developers
+2018-11-28 19:26:34,692 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   built with gcc 8.2.1 (GCC) 20181017
+2018-11-28 19:26:34,692 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth
+2018-11-28 19:26:34,692 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavutil      56. 24.101 / 56. 24.101
+2018-11-28 19:26:34,692 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController - 
+2018-11-28 19:26:34,692 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavcodec     58. 40.100 / 58. 40.100
+2018-11-28 19:26:34,693 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavformat    58. 23.100 / 58. 23.100
+2018-11-28 19:26:34,693 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavdevice    58.  6.100 / 58.  6.100
+2018-11-28 19:26:34,693 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavfilter     7. 46.101 /  7. 46.101
+2018-11-28 19:26:34,693 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswscale      5.  4.100 /  5.  4.100
+2018-11-28 19:26:34,693 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswresample   3.  4.100 /  3.  4.100
+2018-11-28 19:26:34,693 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libpostproc    55.  4.100 / 55.  4.100
+2018-11-28 19:26:34,693 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController - [concat @ 0000023e1480bc40] Impossible to open '"C:Projektekonlab2onlab2ServerPhysicExperimentPhysicExperimentApp_Data95berta.balazs@gmail.com86748d79-12d0-4685-8ac1-5b329a31ac835793d6e8-40e3-444e-b1f8-a7b04094665e.jpg"+'
+2018-11-28 19:26:34,693 [7] DEBUG PhysicExperiment.Controllers.ExperimentsController - C:\\Projektek\\onlab2\\onlab2\\Server\\PhysicExperiment\\PhysicExperiment\\App_Data\\test.txt: Invalid argument
+2018-11-28 19:27:49,057 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController - ffmpeg version N-92544-gb9aff7a53d Copyright (c) 2000-2018 the FFmpeg developers
+2018-11-28 19:27:49,066 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   built with gcc 8.2.1 (GCC) 20181017
+2018-11-28 19:27:49,066 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth
+2018-11-28 19:27:49,066 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - 
+2018-11-28 19:27:49,066 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavutil      56. 24.101 / 56. 24.101
+2018-11-28 19:27:49,066 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavcodec     58. 40.100 / 58. 40.100
+2018-11-28 19:27:49,067 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavformat    58. 23.100 / 58. 23.100
+2018-11-28 19:27:49,067 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavdevice    58.  6.100 / 58.  6.100
+2018-11-28 19:27:49,067 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavfilter     7. 46.101 /  7. 46.101
+2018-11-28 19:27:49,067 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswscale      5.  4.100 /  5.  4.100
+2018-11-28 19:27:49,067 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswresample   3.  4.100 /  3.  4.100
+2018-11-28 19:27:49,067 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libpostproc    55.  4.100 / 55.  4.100
+2018-11-28 19:27:49,067 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController - [concat @ 000001cea21cbc40] Impossible to open '"C:Projektekonlab2onlab2ServerPhysicExperimentPhysicExperimentApp_Data95berta.balazs@gmail.com86748d79-12d0-4685-8ac1-5b329a31ac835793d6e8-40e3-444e-b1f8-a7b04094665e.jpg"'
+2018-11-28 19:27:49,067 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController - C:\\Projektek\\onlab2\\onlab2\\Server\\PhysicExperiment\\PhysicExperiment\\App_Data\\test.txt: Invalid argument
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - ffmpeg version N-92544-gb9aff7a53d Copyright (c) 2000-2018 the FFmpeg developers
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   built with gcc 8.2.1 (GCC) 20181017
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavutil      56. 24.101 / 56. 24.101
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavcodec     58. 40.100 / 58. 40.100
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavformat    58. 23.100 / 58. 23.100
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavdevice    58.  6.100 / 58.  6.100
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavfilter     7. 46.101 /  7. 46.101
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswscale      5.  4.100 /  5.  4.100
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswresample   3.  4.100 /  3.  4.100
+2018-11-28 19:28:23,415 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libpostproc    55.  4.100 / 55.  4.100
+2018-11-28 19:28:23,422 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - [concat @ 0000024166bbbc40] Impossible to open '"C:Projektekonlab2onlab2ServerPhysicExperimentPhysicExperimentApp_Data95berta.balazs@gmail.com86748d79-12d0-4685-8ac1-5b329a31ac835793d6e8-40e3-444e-b1f8-a7b04094665e.jpg"'
+2018-11-28 19:28:23,422 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - C:\\Projektek\\onlab2\\onlab2\\Server\\PhysicExperiment\\PhysicExperiment\\App_Data\\test.txt: Invalid argument
+2018-11-28 19:28:23,425 [15] DEBUG PhysicExperiment.Controllers.ExperimentsController - 
+2018-11-28 19:29:20,277 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - ffmpeg version N-92544-gb9aff7a53d Copyright (c) 2000-2018 the FFmpeg developers
+2018-11-28 19:29:20,286 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   built with gcc 8.2.1 (GCC) 20181017
+2018-11-28 19:29:20,286 [8] DEBUG PhysicExperiment.Controllers.ExperimentsController - 
+2018-11-28 19:29:20,287 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth
+2018-11-28 19:29:20,287 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavutil      56. 24.101 / 56. 24.101
+2018-11-28 19:29:20,287 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavcodec     58. 40.100 / 58. 40.100
+2018-11-28 19:29:20,287 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavformat    58. 23.100 / 58. 23.100
+2018-11-28 19:29:20,288 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavdevice    58.  6.100 / 58.  6.100
+2018-11-28 19:29:20,288 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libavfilter     7. 46.101 /  7. 46.101
+2018-11-28 19:29:20,288 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswscale      5.  4.100 /  5.  4.100
+2018-11-28 19:29:20,288 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libswresample   3.  4.100 /  3.  4.100
+2018-11-28 19:29:20,288 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController -   libpostproc    55.  4.100 / 55.  4.100
+2018-11-28 19:29:20,288 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - [concat @ 000001fcba88bbc0] Impossible to open '"C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\PhysicExperiment\App_Data\95berta.balazs@gmail.com\86748d79-12d0-4685-8ac1-5b329a31ac83\5793d6e8-40e3-444e-b1f8-a7b04094665e.jpg"'
+2018-11-28 19:29:20,288 [10] DEBUG PhysicExperiment.Controllers.ExperimentsController - C:\Projektek\onlab2\onlab2\Server\PhysicExperiment\PhysicExperiment\App_Data\test.txt: Invalid argument

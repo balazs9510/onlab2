@@ -1,0 +1,48 @@
+﻿@model PhysicExperiment.Models.ExperimentViewModel
+@{ 
+    string path;
+}
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+            <div>@Model.Name</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Author, new { @class = "control-label" })
+            <div>@Model.Author</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description, new { @class = "control-label" })
+            <div>@Model.Description</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.StartDate, new { @class = "control-label" })
+            <div>@Model.StartDate</div>
+        </div>
+
+    </div>
+    <div class="col-lg-6 col-sm-12 big-margin">
+        <div class="image-wrapper">
+            <img src="@Url.Action("GetExperimentImage", "Experiments", new { id = Model.Id})" width="280" class="rotate90" id="exp-image"/>
+        </div>
+    </div>
+</div>
+<script>
+   $(function () {
+       setInterval(function () {
+           let url = '@Url.Action("GetExperimentImage", "Experiments", new { id = "asd" , rand = "_X_"})'
+           url = url.replace('asd', '@Model.Id');
+           url = url.replace('_X_', Math.random());
+             $("#exp-image").attr('src', url);
+            @*.ajax({
+                url: "/Experiments/GetExperimentImage",
+                data: {
+                    id: '@Model.Id.Value',
+                    rand: Math.random()
+                }
+            }).done(function (data) {*@
+               
+        }, 3000);
+    });
+</script>
